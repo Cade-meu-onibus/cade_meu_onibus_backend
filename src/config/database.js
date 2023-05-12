@@ -4,7 +4,7 @@ module.exports = {
     username: 'docker',
     password: '123456',
     database: 'template_postgis',
-    difine: {
+    define: {
         timestamps: true,
     }
 };

@@ -3,6 +3,7 @@ const dbConfig = require("../config/database");
 
 const User = require("../models/User");
 const BusRoute = require("../models/BusRoute");
+const BusStop = require("../models/BusStop");
 
 const connection = new Sequelize(dbConfig);
 // Sincronizar o modelo com o banco de dados
@@ -16,6 +17,7 @@ connection.sync()
 
 User.init(connection);
 BusRoute.init(connection);
+BusStop.init(connection);
 
 
 module.exports = connection;
