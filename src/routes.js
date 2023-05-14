@@ -9,10 +9,12 @@ const routes = express.Router();
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 
-routes.get('/busesRoutes', BusRouteController.index);
-routes.post('/busesRoutes', BusRouteController.store);
+routes.get('/busRoutes', BusRouteController.index);
+routes.post('/busRoutes', BusRouteController.store);
+routes.get('/busRoute/:busNumber', BusRouteController.getBusRouteFromNumber);
 
 routes.get('/busStops', BusStopController.index);
 routes.post('/busStops', BusStopController.store);
+routes.get('/busStop/:busStopId', BusStopController.getBusStopFromPK);
 
 module.exports = routes;

@@ -1,5 +1,6 @@
 const BusStop = require("../models/BusStop");
 
+
 module.exports = { 
     
     async index(req, res) {
@@ -7,7 +8,13 @@ module.exports = {
 
         return res.json(busStops);
     },
+    
+    async getBusStopFromPK(req, res) {
+        const busStop = await BusStop.findByPk(req.params.busStopId);
 
+        return res.json(busStop);
+    }
+    ,
     async store(req, res) {
         const {name, coordinates} = req.body;
 
