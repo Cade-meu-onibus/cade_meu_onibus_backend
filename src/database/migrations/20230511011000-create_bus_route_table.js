@@ -4,17 +4,19 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('bus_route', { 
-      id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-      },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       number: {
+        type: Sequelize.STRING,
+        primaryKey: true,
+        autoIncrement: false,
+        allowNull: false,
+      },
+      // id: {
+      //   type: Sequelize.INTEGER,
+      //   primaryKey: true,
+      //   autoIncrement: true,
+      //   allowNull: false,
+      // },
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
