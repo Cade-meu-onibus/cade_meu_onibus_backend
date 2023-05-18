@@ -25,7 +25,4 @@ BusStop.init(connection);
 BusRoute.belongsToMany(BusStop, {through: 'BusRouteBusStop'});
 BusStop.belongsToMany(BusRoute, {through: 'BusRouteBusStop'});
 
-
-BusRoute.
-
 module.exports = connection; 
