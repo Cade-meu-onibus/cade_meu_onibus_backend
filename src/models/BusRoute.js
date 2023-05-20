@@ -13,8 +13,7 @@ class BusRoute extends Model {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            route: DataTypes.GEOMETRY,
-            busStop: DataTypes.STRING,
+            route: DataTypes.GEOMETRY
         }, {
             sequelize: connection
         })
