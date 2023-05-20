@@ -1,3 +1,4 @@
+const BusRoute = require("../models/BusRoute");
 const BusStop = require("../models/BusStop");
 
 
@@ -13,6 +14,13 @@ module.exports = {
         const busStop = await BusStop.findByPk(req.params.busStopId);
 
         return res.json(busStop);
+    }
+    ,
+    async getBusStopsFromBusNumber(req, res) {
+        const busRoute = await BusRoute.findByPk(req.params.busNumber)
+        const busStops = await busRoute.getBusStops();
+
+        return res.json(busStops);
     }
     ,
     async store(req, res) {
