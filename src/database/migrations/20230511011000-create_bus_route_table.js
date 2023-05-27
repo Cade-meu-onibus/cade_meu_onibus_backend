@@ -3,18 +3,20 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.createTable('BusRoute', { 
-      id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-        allowNull: false,
-      },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
+    await queryInterface.createTable('bus_route', { 
       number: {
+        type: Sequelize.STRING,
+        primaryKey: true,
+        autoIncrement: false,
+        allowNull: false,
+      },
+      // id: {
+      //   type: Sequelize.INTEGER,
+      //   primaryKey: true,
+      //   autoIncrement: true,
+      //   allowNull: false,
+      // },
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
