@@ -10,6 +10,8 @@ services:
       - .:/usr/app
   db:
     image: 'postgis/postgis'
+    ports:
+      - '5432:5432'
     environment:
       POSTGRES_PASSWORD: '123456'
       POSTGRES_USER: 'docker'

@@ -5,6 +5,6 @@ module.exports = {
     password: '123456',
     database: 'template_postgis',
     define: {
-        timestamps: true,
+        timestamps: false,
     }
 };
