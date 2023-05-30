@@ -4,15 +4,15 @@
 // contato: marcos.saavedra@icen.ufpa.br
 
 
-// para execução do erro instalar o jest e  o supertest com npm install --ssave-dev jest e o npm install --save-dev supertest
-// por fom rodar o teste com npm run test
+// para execução do erro instalar o jest e  o supertest com npm install --save-dev jest e o npm install --save-dev supertest
+// para rodar o teste alterar a linha "command: npm start" no docker-compose.yml para "command: npm test" 
 const request = require('supertest');
-const app = require('../src/server');
+const app = require('../src/app');
 
 describe('Testes do aplicativo', () => {
-  it('deve iniciar o aplicativo corretamente', async () => {
-    const response = await request(app).get('/');
+  it('Deve receber um Json com os dados das Linhas', async () => {
+    const response = await request(app).get('/busRoutes');
     expect(response.status).toBe(200);
-    expect(response.text).toBe('running node app teste');
+    expect(response.type).toBe('application/json');
   });
 });
