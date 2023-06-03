@@ -10,9 +10,8 @@ const routes = express.Router();
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 
-routes.get('/timeToArrive/atBusStop/:busNumber/:busStartCoordinate/:endCoordinate', MapBoxController.getTimeToArriveAtBusStop);
-routes.get('/timeToArrive/atDestination/:busNumber/:busStartCoordinate/:endCoordinate', MapBoxController.getTimeToArriveAtDestination);
-routes.get('/timeToArrive/fullTrip/:busNumber/:busStartCoordinate/:originStopCoordinate/:endCoordinate', MapBoxController.getFullTripEstimatedTime);
+routes.get('/timeToArrive/atBusStop/:busNumber/:busStartCoordinate/:endCoordinate', MapBoxController.getTimeOfRouteFraction);
+routes.get('/timeToArrive/fullTrip/:busNumber/:busStartCoordinate/:originStopCoordinate/:endCoordinate', MapBoxController.getTimeOfFullRoute);
 
 
 routes.get('/busRoutes', BusRouteController.index);
