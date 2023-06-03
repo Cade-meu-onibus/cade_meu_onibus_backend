@@ -11,8 +11,16 @@ module.exports = {
     
     async getBusRouteFromNumber(req, res) {
         const busRoute = await BusRoute.findByPk(req.params.busNumber);
-
-        return res.json(busRoute);
+        const busStops = await busRoute.getBusStops();
+        const jsonResponse = {
+          name: busRoute.name,
+          number: busRoute.number,
+          route: busRoute.route.coordinates,
+          busStops: busStops
+                .filter(item => item.coordinates) // Filtra os itens que possuem a propriedade 'coordinates'
+                .map((busStop) => busStop.coordinates.coordinates)
+        }
+        return res.json(jsonResponse);
     }
     ,
     async store(req, res) {
