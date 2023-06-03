@@ -19,8 +19,16 @@ module.exports = {
     async getBusStopsFromBusNumber(req, res) {
         const busRoute = await BusRoute.findByPk(req.params.busNumber)
         const busStops = await busRoute.getBusStops();
+        const jsonResponse = {
+            name: busRoute.name,
+            number: busRoute.number,
+            busStops: busStops
+                .filter(item => item.coordinates) // Filtra os itens que possuem a propriedade 'coordinates'
+                .map((busStop) => busStop.coordinates.coordinates)
+          }
+        console.log(jsonResponse);
 
-        return res.json(busStops);
+        return res.json(jsonResponse);
     }
     ,
     async store(req, res) {

@@ -2,12 +2,17 @@ const express = require("express");
 
 const UserController = require("./controllers/UserControllers");
 const BusRouteController = require("./controllers/BusRouteController")
-const BusStopController = require("./controllers/BusStopController")
+const BusStopController = require("./controllers/BusStopController");
+const MapBoxController = require("./controllers/MapBoxController");
 
 const routes = express.Router();
 
 routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
+
+routes.get('/timeToArrive/atBusStop/:busNumber/:busStartCoordinate/:endCoordinate', MapBoxController.getTimeOfRouteFraction);
+routes.get('/timeToArrive/fullTrip/:busNumber/:busStartCoordinate/:originStopCoordinate/:endCoordinate', MapBoxController.getTimeOfFullRoute);
+
 
 routes.get('/busRoutes', BusRouteController.index);
 routes.get('/busRoute/:busNumber', BusRouteController.getBusRouteFromNumber);
