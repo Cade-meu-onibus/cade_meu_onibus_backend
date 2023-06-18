@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
 
 async function getAPIKeyFromParameterStore() {
-  const ssm = new AWS.SSM();
+  const ssm = new AWS.SSM({region: 'sa-east-1'});
 
   const parameterName = 'MAPBOX_ACCESS_TOKEN';
 
