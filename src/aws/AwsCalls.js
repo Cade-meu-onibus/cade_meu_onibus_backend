@@ -10,7 +10,7 @@ async function getAPIKeyFromParameterStore() {
 
     if (response.Parameter && response.Parameter.Value) {
       const apiKey = response.Parameter.Value;
-    //   console.log('API Key:', apiKey);
+      console.log('API Key:', apiKey);
       return apiKey;
     } else {
       console.log('API Key not found');
@@ -21,8 +21,5 @@ async function getAPIKeyFromParameterStore() {
     return null;
   }
 }
-
-// Chamada da função para resgatar a chave de API
-// getAPIKeyFromParameterStore();
 
 module.exports = getAPIKeyFromParameterStore;

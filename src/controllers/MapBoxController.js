@@ -1,6 +1,5 @@
 const fetch = require('node-fetch');
 const BusRoute = require("../models/BusRoute");
-const getAPIKeyFromParameterStore = require('../aws/AwsCalls');
 
 module.exports = {     
     async getTimeOfRouteFraction(req, res) {
@@ -8,9 +7,7 @@ module.exports = {
         const busNumber = req.params.busNumber;
         const busStartCoordinate = req.params.busStartCoordinate;
         const busEndCoordinate = req.params.endCoordinate;
-        
-        const mapbox_access_token = await getAPIKeyFromParameterStore();
-        
+
         let url;
         try {
             
@@ -43,7 +40,7 @@ module.exports = {
                 }
             });        
                 
-            url = `https://api.mapbox.com/directions/v5/mapbox/driving/${busStartCoordinate};${coordinatesInBetween}${busEndCoordinate}?alternatives=false&geometries=geojson&overview=simplified&steps=false&access_token=${mapbox_access_token}`
+            url = `https://api.mapbox.com/directions/v5/mapbox/driving/${busStartCoordinate};${coordinatesInBetween}${busEndCoordinate}?alternatives=false&geometries=geojson&overview=simplified&steps=false&access_token=${process.env.MAPBOX_ACCESS_TOKEN}`
         } catch (error) {
             res.statusCode = 400;
             return res.json({
